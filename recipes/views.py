@@ -1,14 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'recipes/home.html')
-
-
-def sobre(request):
-    return HttpResponse("SOBRE")
-
-
-def my_view(request):
-    return HttpResponse("cel:123")
+    return render(request, 'recipes/pages/home.html')
