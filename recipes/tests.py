@@ -1,5 +1,6 @@
 from django.test import TestCase
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
+
 from recipes import views
 
 
@@ -35,3 +36,11 @@ class RecipeViewsTest(TestCase):
     def test_recipe_search_url_is_correct(self):
         url = reverse('recipes:search')
         self.assertEqual(url, '/recipes/search/')
+
+    def test_recipe_search_uses_correct_view_function(self):
+        resolved = resolve(reverse('recipes:search'))
+        self.assertIs(resolved.func, views.search)
+
+    def test_recipe_search_loads_correct_template(self):
+        response = self.client.get(reverse('recipes:search'))
+        self.assertTemplateUsed(response, 'recipes/pages/search.html')
