@@ -31,3 +31,7 @@ class RecipeViewsTest(TestCase):
         view = resolve(
             reverse('recipes:recipe', kwargs={'id': 1}))
         self.assertIs(view.func, views.recipe)
+
+    def test_recipe_search_url_is_correct(self):
+        url = reverse('recipes:search')
+        self.assertEqual(url, '/recipes/search/')
