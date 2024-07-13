@@ -1,10 +1,10 @@
-## Title: Scheduling System
+## Scheduling System
 
 ### Description
 A system designed to manage and schedule appointments efficiently, ensuring that sellers are not double-booked.
 
 ### Objective
-To provide a robust scheduling solution that includes appointment creation, conflict validation, and a calendar view.
+To provide a scheduling solution that includes appointment creation, conflict validation, and a calendar view.
 
 ## Installation Instructions
 
@@ -50,7 +50,7 @@ bench set-config developer_mode 1
 
 ### DocTypes
 
-#### Appointment
+#### Appointment DocType:
 - **Client Name**: Data
 - **Start date**: Datetime
 - **End date**: Datetime (Read-only, set programmatically based on the start date and duration)
@@ -137,12 +137,22 @@ Configures and manages the calendar view for appointments.
     }
     ```
 
-## Testing
+## Considerações Finais
 
-### Running Unit Tests
-```bash
-pytest tests/unit
-```
+### Possíveis Melhorias no Sistema
+- **Integração com APIs Externas**: Adicionar integração com serviços de calendário como Google Calendar e Outlook para sincronização de compromissos.
+- **Notificações e Lembretes**: Implementar sistema de notificações e lembretes para alertar clientes e vendedores sobre compromissos agendados.
+- **Relatórios e Análises**: Desenvolver módulos para geração de relatórios e análise de dados, permitindo aos usuários obter insights sobre a utilização e desempenho do sistema.
+- **Aprimoramento da Interface de Usuário**: Melhorar a interface de usuário para torná-la mais intuitiva e acessível.
+- **Suporte a Múltiplos Idiomas**: Adicionar suporte a múltiplos idiomas para atender a um público mais amplo.
+
+### Dificuldades Encontradas no Projeto
+- **Gerenciamento de Conflitos de Horário**: Implementar a validação para evitar conflitos de agendamento foi um desafio significativo, exigindo lógica complexa para garantir que um vendedor não seja agendado para múltiplos compromissos simultâneos.
+- **Configuração do Ambiente de Desenvolvimento**: Configurar corretamente o ambiente de desenvolvimento com todas as dependências necessárias foi uma tarefa demorada.
+- **Integração com Framework Frappe**: Adaptar o projeto para funcionar de forma otimizada dentro do framework Frappe exigiu um entendimento profundo de sua arquitetura e melhores práticas.
+- **Manutenção da Qualidade do Código**: Garantir que o código fosse bem estruturado e atendesse aos padrões de qualidade, utilizando ferramentas de linting e formatação, apresentou desafios durante o desenvolvimento colaborativo.
+
+
 ## Pre-commit Configuration
 
 Pre-commit is configured to use the following tools for checking and formatting your code:
