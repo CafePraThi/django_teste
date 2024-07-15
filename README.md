@@ -103,7 +103,7 @@ Provides API endpoints and server-side logic for managing appointments via HTTP 
 
 ### Postman API Link
 
-Here is the [[API Documentation Link](#)](https://documenter.getpostman.com/view/26683227/2sA3kPojDf). In this documentation, you will find detailed information on the available endpoints, including how to:
+Here is the [[API Documentation Link](https://documenter.getpostman.com/view/26683227/2sA3kPojDf)]. In this documentation, you will find detailed information on the available endpoints, including how to:
 
 - Retrieve all appointments
 - Retrieve a single appointment
