@@ -8,16 +8,12 @@ To provide a scheduling solution that includes appointment creation, conflict va
 
 ## Installation Instructions
 
-### Prerequisites
-- Python 3.x
-- Frappe Framework
-- MySQL
 
 ### Installation Steps
 
 1. Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone [<repository-url>](https://github.com/CafePraThi/scheduling_system)
     ```
 
 2. Navigate to the bench directory:
@@ -27,12 +23,17 @@ To provide a scheduling solution that includes appointment creation, conflict va
 
 3. Get the app:
     ```bash
-    bench get-app <URL_OF_THIS_REPO> --branch develop
+    bench get-app [<URL_OF_THIS_REPO>](https://github.com/CafePraThi/scheduling_system) --branch develop
     ```
 
 4. Install the app:
     ```bash
     bench install-app scheduling_system
+    ```
+
+5. Install the app on site:
+    ```bash
+    bench --site your-site install-app scheduling_system
     ```
 
 ## Configuration Details
@@ -42,9 +43,6 @@ To edit/create DocTypes, activate developer mode:
 ```bash
 bench set-config developer_mode 1
 ```
-## Configuration Files
-
-- `site_config.json`: Adjust settings as needed.
 
 ## Database Schema
 
@@ -69,12 +67,12 @@ bench set-config developer_mode 1
 
 ### Creating an Appointment
 1. Log in to the system.
-2. Navigate to the Appointments module.
-3. Click on "New Appointment."
+2. Navigate to the Appointments List.
+3. Click on "Add Appointment."
 4. Fill in the required fields and save.
 
 ### Calendar View
-1. Navigate to the Appointments module.
+1. Navigate to the Appointments List.
 2. The calendar view is set as the default view, displaying all appointments.
 
 ## Code Documentation
@@ -82,75 +80,59 @@ bench set-config developer_mode 1
 ### Code Structure
 - `apps/scheduling_system`: Main app directory.
 - `doctype/appointment`: Contains the Appointment DocType.
-  - `appointment.py`: Backend logic for Appointment Doctype.
+  - `appointment.py`: Backend logic for Appointment Doctype .
   - `appointment.js`: Client-side logic for Appointment Doctype.
   - `appointment_calendar.js`: JavaScript for calendar view.
+  - - `appointment_api.py`: Provides API endpoints for Appointment Doctype.
 
 ### Key Modules
 
 #### appointment.py
-Handles backend logic for appointment management.
+Handles backend logic for appointment management, including validation and utility functions.
 
 #### appointment.js
-Handles client-side interactions for creating and managing appointments.
+Configures and apply calendar as primary view
 
 #### appointment_calendar.js
 Configures and manages the calendar view for appointments.
 
+#### appointment_api.py
+Provides API endpoints and server-side logic for managing appointments via HTTP requests.
+
 ## API Documentation
 
-### Endpoints
+### Postman API Link
 
-#### Retrieve Appointments
-- **Method**: GET
-- **Endpoint**: `/api/appointments`
-- **Response**:
-    ```json
-    [
-      {
-        "client_name": "John Doe",
-        "start_date": "2024-07-15T10:00:00",
-        "end_date": "2024-07-15T11:00:00",
-        "seller": "seller_1",
-        "status": "Scheduled"
-      }
-    ]
-    ```
+Here is the [[API Documentation Link](#)](https://documenter.getpostman.com/view/26683227/2sA3kPojDf). In this documentation, you will find detailed information on the available endpoints, including how to:
 
-#### Create Appointment
-- **Method**: POST
-- **Endpoint**: `/api/appointments`
-- **Request**:
-    ```json
-    {
-      "client_name": "John Doe",
-      "start_date": "2024-07-15T10:00:00",
-      "end_date": "2024-07-15T11:00:00",
-      "seller": "seller_1",
-      "status": "Scheduled"
-    }
-    ```
-- **Response**:
-    ```json
-    {
-      "message": "Appointment created successfully"
-    }
-    ```
+- Retrieve all appointments
+- Retrieve a single appointment
+- Create a new appointment
+- Update an existing appointment
+- Delete an appointment
 
-## Considerações Finais
+## Final Considerations
 
-### Possíveis Melhorias no Sistema
-- **Integração com APIs Externas**: Adicionar integração com serviços de calendário como Google Calendar e Outlook para sincronização de compromissos.
-- **Notificações e Lembretes**: Implementar sistema de notificações e lembretes para alertar clientes e vendedores sobre compromissos agendados.
-- **Relatórios e Análises**: Desenvolver módulos para geração de relatórios e análise de dados, permitindo aos usuários obter insights sobre a utilização e desempenho do sistema.
-- **Aprimoramento da Interface de Usuário**: Melhorar a interface de usuário para torná-la mais intuitiva e acessível.
-- **Suporte a Múltiplos Idiomas**: Adicionar suporte a múltiplos idiomas para atender a um público mais amplo.
+### Potential System Enhancements
 
-### Dificuldades Encontradas no Projeto
-- **Gerenciamento de Conflitos de Horário**: Implementar a validação para evitar conflitos de agendamento foi um desafio significativo, exigindo lógica complexa para garantir que um vendedor não seja agendado para múltiplos compromissos simultâneos.
-- **Configuração do Ambiente de Desenvolvimento**: Configurar corretamente o ambiente de desenvolvimento com todas as dependências necessárias foi uma tarefa demorada.
-- **Integração com Framework Frappe**: Adaptar o projeto para funcionar de forma otimizada dentro do framework Frappe exigiu um entendimento profundo de sua arquitetura e melhores práticas.
-- **Manutenção da Qualidade do Código**: Garantir que o código fosse bem estruturado e atendesse aos padrões de qualidade, utilizando ferramentas de linting e formatação, apresentou desafios durante o desenvolvimento colaborativo.
+- **Duration Field - Time**: Improve the user experience by refining the duration field format.
+- **Repeating Meetings for Multiple Consecutive Days**: Enable scheduling of recurring meetings over several consecutive days.
+- **Client Retrieval from System**: Integrate the system to automatically fetch client.
+- **Integration with Google Calendar, Microsoft Teams, or Other Calendars**: Facilitate automatic synchronization of appointments with external calendar platforms.
+- **Restrict Appointment Creation**: Allow appointment creation only with the initial status "Scheduled".
+- **Access Profiles**:
+  - Users can only view their own appointments.
+  - Managers have access to appointments for all users.
+- **Email Notifications and Appointment Reminders**: Implement automatic email notifications for appointment reminders.
+- **Estimate Hours of Meetings Held per Month**: Develop functionality to estimate and display the number of hours of meetings held each month.
+- **Enhanced Management Reports**: Improve management reports to provide detailed insights into system usage and performance.
+- **Endpoints**:
+  - **Enhanced API Permissions**: Block Guess API.
+  - **Pagination**: Implement pagination in endpoints to enhance performance and navigation of results.
+
+### Challenges Encountered in the Project
+
+Due to the limited time available, I managed to achieve some of the project goals. However, with more dedicated time for documentation and exploration, I believe I could have gained a deeper understanding of the system. This was my first experience with the library, and initially, there was limited content available online. Despite this, I found the documentation to be robust and encountered a vibrant community and active forums. With more time invested in learning alongside the documentation, I am confident I could have achieved a more profound insight into the system.
 
 
 ## Pre-commit Configuration
